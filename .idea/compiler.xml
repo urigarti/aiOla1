@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="selenium" />
+        <module name="com.aiola" />
         <module name="com.payoneer" />
-        <module name="com.tiba" />
       </profile>
     </annotationProcessing>
   </component>
