@@ -31,7 +31,7 @@ public class ElementWaiter {
     }
 
     public static ElementWaiter createInstance(WebDriver driver) {
-        if(elementWaiter == null) {
+        if (elementWaiter == null) {
             elementWaiter = new ElementWaiter(driver);
         }
         return elementWaiter;
@@ -45,8 +45,7 @@ public class ElementWaiter {
     public Boolean isElementExist(By locator) {
         try {
             return _driver.findElement(locator) != null;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -68,22 +67,21 @@ public class ElementWaiter {
     public Boolean isElementExist(WebElement element) {
         try {
             return element != null;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
+
     public <T extends PageObjectCommon> void fluentWaitClick(WebElement _element, T targetClass) {
         waiter.until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver arg0) {
                 try {
 //                    targetClass.refreshElement();
-                    if(elementInteractable(_element)) {
+                    if (elementInteractable(_element)) {
                         _element.click();
                         return true;
-                    }
-                    else {
+                    } else {
                         return false;
                     }
                 } catch (Exception e) {
@@ -101,11 +99,10 @@ public class ElementWaiter {
                     WebElement targetElement = innerFindElement(arg0, _element);
 
 //                    targetClass.refreshElement();
-                    if(elementInteractable(targetElement)) {
+                    if (elementInteractable(targetElement)) {
                         targetElement.click();
                         return true;
-                    }
-                    else {
+                    } else {
                         return false;
                     }
                 } catch (Exception e) {
@@ -131,7 +128,7 @@ public class ElementWaiter {
     }
 
     public <T extends PageObjectCommon> void fluentWaitType(WebElement _element, String text, T targetClass) {
-        waiter.until(new ExpectedCondition <Boolean>() {
+        waiter.until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver arg0) {
                 try {
@@ -177,11 +174,10 @@ public class ElementWaiter {
             @Override
             public String apply(WebDriver arg0) {
                 try {
-                    if(parentElement == null) {
+                    if (parentElement == null) {
                         WebElement _element = arg0.findElement(element);
                         return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
-                    }
-                    else {
+                    } else {
                         WebElement _element = parentElement.findElement(element);
                         return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
                     }
@@ -198,15 +194,9 @@ public class ElementWaiter {
             public String apply(WebDriver arg0) {
                 try {
                     WebElement targetElement = innerFindElement(arg0, element);
-                    if(targetElement !=null) {
+                    if (targetElement != null) {
                         return targetElement.getText();
                     }
-                    /*if(parentElement == null) {
-                        return arg0.findElement(element).getText();
-                    }
-                    else {
-                        return parentElement.findElement(element).getText();
-                    }*/
                 } catch (Exception e) {
                     return null;
                 }
@@ -214,19 +204,16 @@ public class ElementWaiter {
             }
         });
     }
-    
+
     protected boolean elementInteractable(WebElement webElement) {
         return webElement != null && (webElement.isEnabled() & webElement.isDisplayed());
     }
 
     protected WebElement innerFindElement(WebDriver driver, By elementSelector) {
-        if(this.rootElement == null) {
+        if (this.rootElement == null) {
             return driver.findElement(elementSelector);
-//            return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
-        }
-        else {
+        } else {
             return this.rootElement.findElement(elementSelector);
-//            return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
         }
     }
 
