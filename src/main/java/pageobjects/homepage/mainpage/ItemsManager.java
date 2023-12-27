@@ -48,19 +48,14 @@ public class ItemsManager extends PageCommon implements PageObjectCommon<ItemsMa
         return storeItems.size();
     }
 
-    public String getDescriptionForItem(String itemTitle) throws ShopItemNotFoundException {
+    public ListItem getListItem(String itemTitle) throws ShopItemNotFoundException {
         String foundDesc = null;
         for (ListItem item : storeItems) {
             if (itemTitle.equals(item.getTitle())) {
-                foundDesc = item.getDescription();
-                break;
+                return item;
             }
         }
-        if (foundDesc == null) {
-            throw new ShopItemNotFoundException(itemTitle);
-        } else {
-            return foundDesc;
-        }
+        throw new ShopItemNotFoundException(itemTitle);
     }
 
     @Override

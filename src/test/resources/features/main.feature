@@ -13,4 +13,12 @@ Feature: main
   And Validate Shop Item with Title "Sauce Labs Bike Light" to Have Description that Contains "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included."
   And Validate Shop Item with Title "Sauce Labs Fleece Jacket" to Have Description that Contains "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office."
   And Validate Shop Item with Title "Test.allTheThings() T-Shirt (Red)" to Have Description that Contains "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton."
+
+  Then Validate Shop Item with Title "Sauce Labs Backpack" to Have Price "$29.99"
+  And Validate Shop Item with Title "Sauce Labs Bolt T-Shirt" to Have Price "$15.99"
+  And Validate Shop Item with Title "Sauce Labs Onesie" to Have Price "$7.99"
+  And Validate Shop Item with Title "Sauce Labs Bike Light" to Have Price "$9.99"
+  And Validate Shop Item with Title "Sauce Labs Fleece Jacket" to Have Price "$49.99"
+  And Validate Shop Item with Title "Test.allTheThings() T-Shirt (Red)" to Have Price "$15.99"
+
   And Validate Shop Item count "6"
