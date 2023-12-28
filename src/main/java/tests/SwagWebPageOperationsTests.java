@@ -18,7 +18,6 @@ public class SwagWebPageOperationsTests extends BaseTest {
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
         loginPage.setUsername(username);
     }
-
     @Given("^Set Login Password to \"(.*)\"$")
     public void setLoginPassword(String password) {
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());

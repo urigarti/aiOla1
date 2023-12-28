@@ -6,7 +6,7 @@ public class LoggerManager {
     static LoggerManager loggerManager;
 
     private LoggerManager(Logger logger) {
-        this.logger = logger;
+        LoggerManager.logger = logger;
     }
 
     public static LoggerManager createInstanceUpdatedLogger(Logger logger) {
@@ -20,7 +20,7 @@ public class LoggerManager {
     }
 
     public LoggerManager updateLogger(Logger logger) {
-        this.logger = logger;
+        LoggerManager.logger = logger;
         return this;
     }
 
@@ -31,10 +31,10 @@ public class LoggerManager {
         return loggerManager;
     }
     public void log(String message) {
-        logger.log(message);
+        LoggerManager.logger.log(message);
     }
 
     public void fail(String message) {
-        logger.fail(message);
+        LoggerManager.logger.fail(message);
     }
 }

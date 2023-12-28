@@ -9,7 +9,6 @@ import pageobjects.pagecontracts.PageObjectCommon;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ElementWaiter {
@@ -50,20 +49,6 @@ public class ElementWaiter {
         }
     }
 
-    public <T extends PageObjectCommon> Boolean waitForElementTexts(WebElement element, List<String> text, T targetClass) {
-        return waiter.until(new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver arg0) {
-                try {
-                    targetClass.refreshElement();
-                    return text.contains(element.getText());
-                } catch (Exception e) {
-                    return false;
-                }
-            }
-        });
-    }
-
     public Boolean isElementExist(WebElement element) {
         try {
             return element != null;
@@ -77,7 +62,7 @@ public class ElementWaiter {
             @Override
             public Boolean apply(WebDriver arg0) {
                 try {
-//                    targetClass.refreshElement();
+                    targetClass.refreshElement();
                     if (elementInteractable(_element)) {
                         _element.click();
                         return true;
@@ -98,7 +83,7 @@ public class ElementWaiter {
                 try {
                     WebElement targetElement = innerFindElement(arg0, _element);
 
-//                    targetClass.refreshElement();
+                    targetClass.refreshElement();
                     if (elementInteractable(targetElement)) {
                         targetElement.click();
                         return true;
@@ -117,7 +102,7 @@ public class ElementWaiter {
             @Override
             public Boolean apply(WebDriver arg0) {
                 try {
-//                    targetClass.refreshElement();
+                    targetClass.refreshElement();
                     new Actions(arg0).sendKeys(_element, Keys.RETURN).perform();
                     return true;
                 } catch (Exception e) {
@@ -160,7 +145,7 @@ public class ElementWaiter {
             @Override
             public String apply(WebDriver arg0) {
                 try {
-//                    targetClass.refreshElement();
+                    targetClass.refreshElement();
                     return element.getText();
                 } catch (Exception e) {
                     return null;
@@ -174,13 +159,8 @@ public class ElementWaiter {
             @Override
             public String apply(WebDriver arg0) {
                 try {
-                    if (parentElement == null) {
-                        WebElement _element = arg0.findElement(element);
-                        return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
-                    } else {
-                        WebElement _element = parentElement.findElement(element);
-                        return elementInteractable(_element) ? _element.getAttribute(attribute) : null;
-                    }
+                    WebElement targetElement = innerFindElement(arg0, element);
+                    return elementInteractable(targetElement) ? targetElement.getAttribute(attribute) : null;
                 } catch (Exception e) {
                     return null;
                 }

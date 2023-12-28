@@ -46,7 +46,6 @@ public class SwagShopItemsOperationsTests extends BaseTest {
         }
     }
 
-
     @When("^Validate Shop Item count \"(.*)\"$")
     public void validateShopItemsCount(int itemsCount) {
         if(ItemsManager.createInstance(DriverFactory.getDriver()).getShopItemsCount() != itemsCount) {
