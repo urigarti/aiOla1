@@ -22,16 +22,9 @@ public class ListItem extends PageCommon implements PageObjectCommon<ListItem>  
     String description;
     String price;
 
-//    @FindBy(xpath = "//div[(@class = 'inventory_item_price')]")
-//    WebElement priceElement;
-
-//    @FindBy(xpath = "//button[(@class = 'add-to-cart-sauce-labs-backpack')]")
-//    WebElement addToCartElement;
-
     public ListItem(WebDriver driver, WebElement itemRoot) {
         super(driver);
         this.rootElement = itemRoot;
-//        PageFactory.initElements(driver, this);
     }
 
     public ListItem populateElements() {
